@@ -1,0 +1,56 @@
+﻿
+@model Cars.Models.Vehicle;
+
+@using (Html.BeginForm("VehicleCreate", "Vehicle", FormMethod.Post))
+{
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Car Plate</label>
+            <div class="col-sm-10">
+            <input id="CarPlate" name="CarPlate" type="text"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">KM</label>
+            <div class="col-sm-10">
+            <input id="Km" name="Km" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Model</label>
+            <div class="col-sm-10">
+            <input id="Model" name="Model" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Color</label>
+            <div class="col-sm-10">
+            <input id="Color" name="Color" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">Gear Type</label>
+            <div class="col-sm-10">
+            <input id="GearType" name="GearType" type="text" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Brand</label>
+            <div class="col-sm-10">
+            <select id="brand" name="brand">
+                {
+                @foreach (var brand in @ViewBag.Brands as Cars.Models.Brand[])
+                {
+                        <option value="@brand.Id">@brand.Name</option>
+                    }
+                }
+            </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+}

@@ -1,0 +1,41 @@
+﻿@model Cars.Models.Vehicle[];
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Vehicle Plate</th>
+            <th>Vehicle KM</th>
+            <th>Vehicle Model</th>
+            <th>Vehicle Color</th>
+            <th>Vehicle Gear Type</th>
+            <th>Vehicle Brand</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@car.Id">@car.CarPlate</a>
+                    </td>
+                    <td>@car.Km </td>
+                    <td>@car.Model </td>
+                    <td>@car.Color </td>
+                    <td>@car.GearType </td>
+                    <td>@car?.brand?.Name </td>
+                    <td> <a asp-action="Delete" asp-route-id="@car?.Id" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Delete </a></td>
+                </tr>
+            }
+        }
+
+
+    </tbody>
+
+</table>
+
+<a asp-action="Create">Create Brand</a>

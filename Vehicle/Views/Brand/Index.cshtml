@@ -1,0 +1,34 @@
+﻿@model Cars.Models.Brand[];
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Brand Name</th>
+            <th>Brand Mail</th>
+            <th>Brand Car Count</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var brand in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@brand.Id">@brand.Name</a>
+                </td>
+                <td>@brand.Email </td>
+                <td>@brand.Vehicles.Count </td>
+                <td> <a asp-action="Delete" asp-route-id="@brand.Id" onclick="return confirm('Silmek istediğinizden emin misiniz?')"> Delete </a></td>
+            </tr>
+        }
+
+
+
+    </tbody>
+
+</table>
+
+<a asp-action="Create">Create Brand</a>
